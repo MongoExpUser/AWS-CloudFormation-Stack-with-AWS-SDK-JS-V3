@@ -7,11 +7,11 @@ Creates/Deploys, Updates and Deletes AWS CloudFormation Stack with AWS SDK for J
 <br><br>
 The  script can execute the following:
 
-  1) Uses the indicated YAML or JSON CloudFormation input file to create/deploy resources as specified the input file.
+  1) Uses the indicated YAML or JSON CloudFormation input file to create/deploy resources as specified in the input file.
   
-  2) Update the deployed resources.
+  2) Updates the deployed resources.
   
-  3) Delete the deployed resources.
+  3) Deletes the deployed resources.
 
 <br>
 
@@ -21,11 +21,11 @@ The  script can execute the following:
     
 * An AWS CloudFormation stack can also be deployed via AWS SDK in any language of choice. <br>
     
-* <strong>This repository</strong> contains code for remotely deploying an AWS CloudFormation Stack via AWS SDK for JavaScript/NodeJS V3, from any computer. <br>
+* <strong>This repository</strong> contains code for deploying an AWS CloudFormation stack via AWS SDK for JavaScript/NodeJS V3, from any computer. <br>
     
 * AWS SDK for JavaScript/NodeJS V3 is clean, light weight, fast and it fully supports async-await syntax. <br>
     
-* The sample stack used in this repo is for creating/deploying, updating and deleting an AWS Keyspace and Tables (for Apache Cassandra), used in real-time drilling, reservoir and production applications. <br><br>
+* The sample stack (YAML file) in this repository is for creating/deploying, updating and deleting an AWS Keyspace and Tables (for Apache Cassandra), used in real-time drilling, reservoir and production applications. <br><br>
     
 
 ## DEPLOYING STACK with the NodeJS script
@@ -38,8 +38,9 @@ The  script can execute the following:
    * sudo npm install @aws-sdk/client-cloudformation
     
 2) #### Download or clone the following files, from this repo, into the current working directory (CWD): <br>
-   * NodeJS script - index.js <br>
-   * JSON files - credentials.json and inputConfig.json <br>
+   * NodeJS script:  index.js <br>
+   * JSON files: credentials.json and inputConfig.json <br>
+   * CloudFormation YAML input file:  aws-keyspace-cassandra.yaml <br>
    
 
 3) #### Fill in relevant values in inputConfig.json files.<br>
