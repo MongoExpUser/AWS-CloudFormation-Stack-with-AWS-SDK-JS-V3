@@ -6,7 +6,7 @@
 #  *                                                                                                                                                   *
 #  * Copyright © 2015 - present. MongoExpUser.  All Rights Reserved.                                                                                   *
 #  *                                                                                                                                                   *
-#  * License: MIT - https://github.com/MongoExpUser/CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/LICENSE                                          *
+#  * License: MIT - https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/LICENSE                                      *
 #  *                                                                                                                                                   *
 #  * @License Ends                                                                                                                                     *
 #  *****************************************************************************************************************************************************
