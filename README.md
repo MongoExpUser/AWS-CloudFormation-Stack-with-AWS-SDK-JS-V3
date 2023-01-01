@@ -32,7 +32,7 @@ The  script can execute the following:
 
 ### To deploy the stack  on ```AWS```, follow these steps:
 
-1) #### Install NodeJS and @aws-sdk/client-cloudformation (v3) module
+1) #### Install NodeJS and @aws-sdk/client-cloudformation (v3) module,  assuming Ubuntu OS
    * curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - <br>
    * sudo apt-get install -y nodejs <br>
    * sudo npm install @aws-sdk/client-cloudformation
