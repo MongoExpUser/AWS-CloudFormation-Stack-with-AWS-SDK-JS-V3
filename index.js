@@ -1,3 +1,4 @@
+
 /*
 #  *****************************************************************************************************************************************************
 #  *                                                                                                                                                   *
@@ -21,16 +22,6 @@ class DeployCloudFormationStack
     constructor()
     {
         return null;
-    }
-    
-    async currentTime()
-    {
-        const timeNow = new Date();
-        const year = timeNow.getFullYear();
-        const hour = timeNow.getHours();
-        const minute = timeNow.getMinutes();
-        const second = timeNow.getSeconds();
-        return `${hour}-${minute}-${second}`;
     }
     
     async uuid4()
@@ -95,14 +86,15 @@ class DeployCloudFormationStack
             const regionName = config.regionName;
             const preOrPostFix = `${orgName}-${environment}`;
             const resoureName = config.resoureName;
-            const serviceProvider = config.serviceProvider;
             const creator = config.creator;
+
+            // these tag's key-value pairs will be used if the keys are not specified for resources on the CloudFormation YAML/JSON file
+            // otherwise, the key-value pairs in the YAML/JSON file over-ride the key-value pairs below.
             const tags = [
                 { Key: "region", Value: regionName }, 
                 { Key: "environment", Value: environment },
                 { Key: "project", Value: projectName }, 
                 { Key: "creator", Value: creator },
-                { Key: "service-provider", Value: serviceProvider }
             ];
 
             
@@ -115,12 +107,10 @@ class DeployCloudFormationStack
 
             if(addSuffix === true)
             {
-                tags.push( { Key: "Name", Value: `${preOrPostFix}-${resoureName}-${suffix}` } );
                 tags.push( { Key: "name", Value: `${preOrPostFix}-${resoureName}-${suffix}` } );
             }
             else if(addSuffix === false)
             {
-                tags.push( { Key: "Name", Value: `${preOrPostFix}-${resoureName}` } );
                 tags.push( { Key: "name", Value: `${preOrPostFix}-${resoureName}` } );
             }
         
@@ -164,7 +154,6 @@ class DeployCloudFormationStack
 (async function main()
 {
     const fs = require("fs");
-    const util = require("util");
     const dcfs = new DeployCloudFormationStack(); 
     const inputConfigJsonFilePath = "inputConfigEcoCfn.json";
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
