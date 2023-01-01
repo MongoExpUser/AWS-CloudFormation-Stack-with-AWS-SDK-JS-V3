@@ -1,0 +1,18 @@
+{
+    "orgName" : "orgName",
+    "projectName" : "projectName",
+    "environment"  : "dev",
+    "regionName" : "regionName",
+    "resoureName" :  "resoureName",
+    "creator" : "creator",
+    "serviceProvider": "serviceProvider",
+    "stackName": "rt-subsurface-analysis",
+    "stackTerminationProtection": true,
+    "stackDescription": "Deploy AWS Keyspaces (for Apache Cassandra) for Drilling, Reservoir & Production Applications.",
+    "stackTemplateBodyFileName" : "aws-keyspace-cassandra.yaml",
+    "stackTemplateURL" : "bucketName - this is an alternative to 'stackTemplateBody'",
+    "credentials" : "credentials.json",
+    "createResources" : true,
+    "updateResources" : false,
+    "deleteResources" : false
+}
