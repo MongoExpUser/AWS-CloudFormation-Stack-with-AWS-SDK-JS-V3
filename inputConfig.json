@@ -4,7 +4,7 @@
     "environment"  : "dev",
     "regionName" : "regionName",
     "resoureName" :  "resoureName",
-    "creator" : "creator",
+    "creator" : "creator@domain.com",
     "stackName": "rt-subsurface-analysis",
     "stackTerminationProtection": true,
     "stackDescription": "Deploy AWS Keyspaces (for Apache Cassandra) for Drilling, Reservoir & Production Applications.",
