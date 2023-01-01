@@ -9,7 +9,7 @@ Parameters:
     
   ProjectName:
     Type: String
-    Default: rt-ss-analysis
+    Default: rt-subsurface-analysis
     
   Environment:
     Type: String
@@ -37,16 +37,29 @@ Parameters:
     
   KeyspaceNameTagKey:
     Type: String
-    Default: Name
-    
+    Default: name
+
   KeyspaceTableNameTagKey:
     Type: String
-    Default: Name
-  
+    Default: name
+    
+  KeyspaceRegionTagKey:
+    Type: String
+    Default: region
+
+  KeyspaceEnvironmentTagKey:
+    Type: String
+    Default: environment
+
+  KeyspaceProjectNameTagKey:
+    Type: String
+    Default: project
+
+
   KeyspaceCreatorTagKey:
     Type: String
-    Default: Creator
-    
+    Default: creator
+
   KeyspaceCreatorTagValue:
     Type: String
     Default: creator@domain.com
@@ -67,7 +80,8 @@ Parameters:
   KeyspaceTablePointInTimeRecoveryEnabled:
     Type: String
     Default: false
-    
+
+
 Resources:
   OrgKeyspace:
     Type: AWS::Cassandra::Keyspace
@@ -75,10 +89,16 @@ Resources:
       KeyspaceName: !Sub ${KeyspaceName}
       Tags:
         - Key: !Sub ${KeyspaceNameTagKey}
-          Value: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceName}
+          Value: !Sub ${OrgName}-${Environment}-${KeyspaceName}
+        - Key: !Sub ${KeyspaceRegionTagKey}
+          Value: !Sub ${RegionName}
+        - Key: !Sub ${KeyspaceEnvironmentTagKey}
+          Value: !Sub ${Environment}
+        - Key: !Sub ${KeyspaceProjectNameTagKey}
+          Value: !Sub ${ProjectName}
         - Key: !Sub ${KeyspaceCreatorTagKey}
           Value: !Sub ${KeyspaceCreatorTagValue}
- 
+   
   OrgTableOne:
     DependsOn:
     - OrgKeyspace
@@ -158,10 +178,16 @@ Resources:
       PointInTimeRecoveryEnabled: !Sub ${KeyspaceTablePointInTimeRecoveryEnabled}
       Tags:
         - Key: !Sub ${KeyspaceTableNameTagKey}
-          Value: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameOne}
+          Value: !Sub ${OrgName}-${Environment}-${KeyspaceTableNameOne}
+        - Key: !Sub ${KeyspaceRegionTagKey}
+          Value: !Sub ${RegionName}
+        - Key: !Sub ${KeyspaceEnvironmentTagKey}
+          Value: !Sub ${Environment}
+        - Key: !Sub ${KeyspaceProjectNameTagKey}
+          Value: !Sub ${ProjectName}
         - Key: !Sub ${KeyspaceCreatorTagKey}
           Value: !Sub ${KeyspaceCreatorTagValue}
-          
+
   OrgTableTwo:
     DependsOn:
     - OrgKeyspace
@@ -195,7 +221,13 @@ Resources:
       PointInTimeRecoveryEnabled: !Sub ${KeyspaceTablePointInTimeRecoveryEnabled}
       Tags:
         - Key: !Sub ${KeyspaceTableNameTagKey}
-          Value: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameTwo}
+          Value: !Sub ${OrgName}-${Environment}-${KeyspaceTableNameTwo}
+        - Key: !Sub ${KeyspaceRegionTagKey}
+          Value: !Sub ${RegionName}
+        - Key: !Sub ${KeyspaceEnvironmentTagKey}
+          Value: !Sub ${Environment}
+        - Key: !Sub ${KeyspaceProjectNameTagKey}
+          Value: !Sub ${ProjectName}
         - Key: !Sub ${KeyspaceCreatorTagKey}
           Value: !Sub ${KeyspaceCreatorTagValue}
           
@@ -237,7 +269,13 @@ Resources:
       PointInTimeRecoveryEnabled: !Sub ${KeyspaceTablePointInTimeRecoveryEnabled}
       Tags:
         - Key: !Sub ${KeyspaceTableNameTagKey}
-          Value: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameThree}
+          Value: !Sub ${OrgName}-${Environment}-${KeyspaceTableNameThree}
+        - Key: !Sub ${KeyspaceRegionTagKey}
+          Value: !Sub ${RegionName}
+        - Key: !Sub ${KeyspaceEnvironmentTagKey}
+          Value: !Sub ${Environment}
+        - Key: !Sub ${KeyspaceProjectNameTagKey}
+          Value: !Sub ${ProjectName}
         - Key: !Sub ${KeyspaceCreatorTagKey}
           Value: !Sub ${KeyspaceCreatorTagValue}
           
@@ -246,22 +284,22 @@ Outputs:
     Description: Keyspace for grouping Tables.
     Value: !Ref OrgKeyspace
     Export:
-      Name: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceName}
+      Name: !Sub ${OrgName}-${Environment}-${KeyspaceName}
       
   OrgTableOneOutput:
     Description: Table for storing driling data.
     Value: !Ref OrgTableOne
     Export:
-      Name: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameOne}
+      Name: !Sub ${OrgName}-${Environment}-${KeyspaceTableNameOne}
       
   OrgTableTwoOutput:
     Description: Table for storing reservoir data.
     Value: !Ref OrgTableTwo
     Export:
-      Name: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameTwo}
+      Name: !Sub ${OrgName}-${Environment}-${KeyspaceTableNameTwo}
       
   OrgTableThreeOutput:
     Description: Table for storing production data.
     Value: !Ref OrgTableThree
     Export:
-      Name: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameThree}
+      Name: !Sub ${OrgName}-${Environment}-${KeyspaceTableNameThree}
