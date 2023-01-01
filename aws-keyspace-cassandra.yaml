@@ -261,7 +261,7 @@ Outputs:
       Name: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameTwo}
       
   OrgTableThreeOutput:
-    Description: Table for storing fitness data.
+    Description: Table for storing production data.
     Value: !Ref OrgTableThree
     Export:
       Name: !Sub ${OrgName}-${ProjectName}-${Environment}-${RegionName}-${KeyspaceTableNameThree}
