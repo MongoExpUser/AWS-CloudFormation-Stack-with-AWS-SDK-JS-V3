@@ -2,7 +2,7 @@
 
 <br>
 <strong>
-Create/Deploys, Update and Delete AWS CloudFormation Stack with AWS SDK for JavaScript/NodeJS V3.
+Creates/Deploys, Updates and Deletes AWS CloudFormation Stack with AWS SDK for JavaScript/NodeJS V3.
 </strong>
 <br><br>
 The  script can execute the following:
