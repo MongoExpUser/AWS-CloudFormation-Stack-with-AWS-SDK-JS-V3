@@ -109,8 +109,7 @@ class DeployCloudFormationStack
             const stackName = config.stackName;
             const stackTerminationProtection = config.stackTerminationProtection;
             const stackDescription = config.stackDescription;
-            //const stackTemplateURL = config.stackTemplateURL;
-            const stackTemplateBodyInput = config.stackTemplateBodyFileName || config.stackTemplateURL;
+            const stackTemplateBodyInput = config.stackTemplateBodyFileName;
             console.log(stackTemplateBodyInput);
             const stackTemplateBody =  JSON.parse(JSON.stringify(fs.readFileSync(stackTemplateBodyInput).toString()));
 
