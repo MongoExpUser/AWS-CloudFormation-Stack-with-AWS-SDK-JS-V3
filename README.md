@@ -5,7 +5,7 @@
 Creates/Deploys, Updates and Deletes AWS CloudFormation Stack with AWS SDK for JavaScript/NodeJS V3.
 </strong>
 <br><br>
-The  script can execute the following:
+The  script can execute the followings:
 
   1) Uses the indicated YAML or JSON CloudFormation input file to create/deploy resources as specified in the input file.
   
