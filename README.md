@@ -25,7 +25,7 @@ The  script can execute the followings:
     
 * AWS SDK for JavaScript/NodeJS V3 is clean, light weight, fast and it fully supports async-await syntax. <br>
     
-* The sample stack (YAML file) in this repository is for creating/deploying, updating and deleting an AWS Keyspace and Tables (for Apache Cassandra), used in real-time drilling, reservoir and production applications. <br><br>
+* The sample stack (<strong>keyspace.yaml</strong> file) in this repository is for creating/deploying, updating and deleting an AWS Keyspace and Tables (for Apache Cassandra), used in real-time drilling, reservoir and production applications. <br><br>
     
 
 ## DEPLOYING STACK with the NodeJS script
