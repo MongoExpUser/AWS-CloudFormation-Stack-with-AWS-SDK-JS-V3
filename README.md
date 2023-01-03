@@ -40,7 +40,7 @@ The  script can execute the followings:
 2) #### Download or clone the following files, from this repo, into the current working directory (CWD): <br>
    * NodeJS script:  index.js <br>
    * JSON files: credentials.json and inputConfig.json <br>
-   * CloudFormation YAML input file:  aws-keyspace-cassandra.yaml <br>
+   * CloudFormation YAML input file:  keyspace.yaml <br>
    
 
 3) #### Fill in relevant values in inputConfig.json files.<br>
