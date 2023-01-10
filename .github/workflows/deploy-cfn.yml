@@ -44,7 +44,7 @@ jobs:
         sudo mkdir $SDK_INIT_DIRECTORY
         cd $SDK_INIT_DIRECTORY
         #sudo npm install @aws-sdk/client-cloudformation
-        yarn add @aws-sdk/client-cloudformation
+        sudo yarn add @aws-sdk/client-cloudformation
 
         # show details of the directory content
         sudo df -h
