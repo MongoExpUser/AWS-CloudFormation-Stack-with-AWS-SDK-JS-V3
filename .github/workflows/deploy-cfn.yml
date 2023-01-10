@@ -33,7 +33,7 @@ jobs:
     - name: Install Node.js and AWS-SDK Module
       run: |
         # sudo apt-get install npm
-        curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
+        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
         sudo apt-get install -y nodejs
         
         # check versions
@@ -43,8 +43,7 @@ jobs:
         # create init/base directory & install Node.js module(s)
         sudo mkdir $SDK_INIT_DIRECTORY
         cd $SDK_INIT_DIRECTORY
-        #sudo npm install @aws-sdk/client-cloudformation
-        sudo yarn add @aws-sdk/client-cloudformation
+        sudo npm install @aws-sdk/client-cloudformation
 
         # show details of the directory content
         sudo df -h
