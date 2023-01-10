@@ -43,7 +43,7 @@ jobs:
         # create init/base directory & install Node.js module(s)
         sudo mkdir $SDK_INIT_DIRECTORY
         cd $SDK_INIT_DIRECTORY
-        sudo npm install @aws-sdk/client-cloudformation@3.245.0
+        sudo npm install @aws-sdk/client-cloudformation@3.216.0
 
         # show details of the directory content
         sudo df -h
