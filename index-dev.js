@@ -153,12 +153,14 @@ class DeployCloudFormationStack
 (async function main()
 {
     const fs = require("fs");
+    const process = require("process");
     const dcfs = new DeployCloudFormationStack(); 
     const inputConfigJsonFilePath = "inputConfig.json";
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     const credentialJsonFilePath = inputConfig.credentials;
     let credentials =  JSON.parse(fs.readFileSync(credentialJsonFilePath));
-    let options = { credentials: { region: regionName } };
+    const region = process.env.AWS_REGION;
+    let options = { credentials: { region: region } };
     const config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     await dcfs.createDeployStack(options, config);
 }());
