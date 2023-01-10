@@ -1,4 +1,4 @@
-name: CI - AWS-SDK-JS Deploy CFN
+name: CI - AWS-SDK-JS-V3 Deploy CFN
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
    # matches pull request for all branches and tag names
 
 jobs:
-  aws-sdk-js:
-    name: AWS-SDK-JS-Deploy
+  aws-sdk-js-v3:
+    name: AWS-SDK-JS-V3-Deploy-CFN
     runs-on: ubuntu-latest
     env:
       DEV: 'no'
