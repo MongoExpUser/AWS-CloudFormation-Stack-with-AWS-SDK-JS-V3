@@ -5,7 +5,7 @@ Description: Deploys Amazon Keyspace (for Apache Cassandra) and Tables for Drill
 Parameters:
   OrgName:
     Type: String
-    Default: org
+    Default: domain
     
   ProjectName:
     Type: String
@@ -85,7 +85,7 @@ Resources:
   OrgKeyspace:
     Type: AWS::Cassandra::Keyspace
     Properties:
-      KeyspaceName: !Sub ${KeyspaceName}
+      KeyspaceName: !Sub ${KeyspaceName}-${Environment}
       Tags:
         - Key: !Sub ${KeyspaceNameTagKey}
           Value: !Sub ${OrgName}-${Environment}-${KeyspaceName}
