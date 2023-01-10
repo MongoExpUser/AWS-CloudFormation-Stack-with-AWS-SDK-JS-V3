@@ -61,7 +61,7 @@ jobs:
         sudo mv index-prod.js index.js 
         
     - name: AWS SDK DEPLOY CFN YAML/JSON File
-      if:  (env.PLAN == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
+      if:  (env.DEPLOY == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
       run: |
         sudo node index.js
         
