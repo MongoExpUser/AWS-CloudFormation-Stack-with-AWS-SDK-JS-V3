@@ -155,7 +155,7 @@ class DeployCloudFormationStack
 {
     const fs = require("fs");
     const dcfs = new DeployCloudFormationStack(); 
-    const inputConfigJsonFilePath = "inputConfigEcoCfn.json";
+    const inputConfigJsonFilePath = "inputConfig.json";
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     const credentialJsonFilePath = inputConfig.credentials;
     let credentials =  JSON.parse(fs.readFileSync(credentialJsonFilePath));
