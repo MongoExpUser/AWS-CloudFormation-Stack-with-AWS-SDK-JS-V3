@@ -40,12 +40,12 @@ jobs:
         sudo node -v
         sudo npm -v
         
-        # create base dir & install Node.js module(s)
+        # create init/base directory & install Node.js module(s)
         sudo mkdir $SDK_INIT_DIRECTORY
         cd $SDK_INIT_DIRECTORY
         sudo npm install @aws-sdk/client-cloudformation
 
-        # show dir content details
+        # show details of the directory content
         sudo df -h
         sudo free -h 
         sudo ls -ltr
