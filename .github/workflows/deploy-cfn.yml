@@ -41,9 +41,9 @@ jobs:
         sudo npm -v
         
         # create init/base directory & install Node.js module(s) & list install module(s)
-        sudo mkdir $SDK_INIT_DIRECTORY
-        cd $SDK_INIT_DIRECTORY
-        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$SDK_INIT_DIRECTORY @aws-sdk/client-cloudformation
+        #sudo mkdir $SDK_INIT_DIRECTORY
+        #cd $SDK_INIT_DIRECTORY
+        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
         sudo npm ls
 
         # show details of the directory content
@@ -54,12 +54,14 @@ jobs:
     - name: DEPLOY - Dev
       if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
       run: |
+        pwd
         sudo mv index-dev.js index.js 
-        sudo node $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$SDK_INIT_DIRECTORY/index.js
+        sudo node index.js
         
     - name: DEPLOY - Prod
       if:  (env.DEPLOY == 'yes' && env.PROD == 'yes' )
       run: |
+        pwd
         sudo mv index-prod.js index.js 
-        sudo node $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$SDK_INIT_DIRECTORY/index.js
+        sudo node index.js
 
