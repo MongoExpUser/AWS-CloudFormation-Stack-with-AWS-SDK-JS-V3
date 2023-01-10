@@ -158,7 +158,7 @@ class DeployCloudFormationStack
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     const credentialJsonFilePath = inputConfig.credentials;
     let credentials =  JSON.parse(fs.readFileSync(credentialJsonFilePath));
-    let options = { credentials: { region: regionName };
+    let options = { credentials: { region: regionName } };
     const config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     await dcfs.createDeployStack(options, config);
 }());
