@@ -10,8 +10,7 @@ on:
 jobs:
   aws-sdk-js-v3:
     name: AWS-SDK-JS-V3-Deploy-CFN
-    runs-on: node:alpine3.16 
-    #ubuntu-latest
+    runs-on: ubuntu-latest
     env:
       DEV: 'yes'
       PROD: 'no'
@@ -30,10 +29,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
-    
+      
     - name: Install Node.js and CFN-Client-V3 Module
       run: |
-        # sudo apt-get install npm
+        sudo apt-get -y update
         curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
         sudo apt-get install -y nodejs
         
@@ -44,7 +43,7 @@ jobs:
         # create init/base directory & install Node.js module(s)
         sudo mkdir $SDK_INIT_DIRECTORY
         cd $SDK_INIT_DIRECTORY
-        #sudo npm install @aws-sdk/client-cloudformation@3.216.0
+        sudo npm install @aws-sdk/client-cloudformation
 
         # show details of the directory content
         sudo df -h
