@@ -1,3 +1,5 @@
+[![CI - AWS-SDK-JS Deploy CFN](https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/actions/workflows/aws-sdk-cfn-deploy.yml/badge.svg)](https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/actions/workflows/aws-sdk-cfn-deploy.yml)
+
 # CloudFormation-Stack-with-AWS-SDK-JS-V3
 
 <br>
