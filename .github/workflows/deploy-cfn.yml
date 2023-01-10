@@ -10,7 +10,8 @@ on:
 jobs:
   aws-sdk-js-v3:
     name: AWS-SDK-JS-V3-Deploy-CFN
-    runs-on: ubuntu-latest
+    runs-on: node:alpine3.16 
+    #ubuntu-latest
     env:
       DEV: 'yes'
       PROD: 'no'
@@ -43,7 +44,7 @@ jobs:
         # create init/base directory & install Node.js module(s)
         sudo mkdir $SDK_INIT_DIRECTORY
         cd $SDK_INIT_DIRECTORY
-        sudo npm install @aws-sdk/client-cloudformation@3.216.0
+        #sudo npm install @aws-sdk/client-cloudformation@3.216.0
 
         # show details of the directory content
         sudo df -h
