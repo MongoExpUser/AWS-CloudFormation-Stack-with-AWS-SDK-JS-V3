@@ -12,7 +12,7 @@ jobs:
     name: AWS-SDK-JS-V3-Deploy-CFN
     runs-on: ubuntu-latest
     env:
-      DEV: 'no'
+      DEV: 'yes'
       PROD: 'no'
       DEPLOY: 'no'
       SDK_INIT_DIRECTORY: 'init'
