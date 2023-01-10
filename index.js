@@ -1,19 +1,19 @@
 
 /*
-#  *****************************************************************************************************************************************************
-#  *                                                                                                                                                   *
-#  * @License Starts                                                                                                                                   *
-#  *                                                                                                                                                   *
-#  * Copyright © 2015 - present. MongoExpUser.  All Rights Reserved.                                                                                   *
-#  *                                                                                                                                                   *
-#  * License: MIT - https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/LICENSE                                      *
-#  *                                                                                                                                                   *
-#  * @License Ends                                                                                                                                     *
-#  *****************************************************************************************************************************************************
-#  *                                                                                                                                                   *
-#  *  index.js implements a module for the creating/deploying or deleting an AWS ClouddFormation stack with AWS-SDK for JavaScript/Node.JS V3          *
-#  *                                                                                                                                                   *                                                                                                                                              * 
-#  *****************************************************************************************************************************************************
+#  ***********************************************************************************************************************************************
+#  *                                                                                                                                             *
+#  * @License Starts                                                                                                                             *
+#  *                                                                                                                                             *
+#  * Copyright © 2015 - present. MongoExpUser.  All Rights Reserved.                                                                             *
+#  *                                                                                                                                             *
+#  * License: MIT - https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/LICENSE                                *
+#  *                                                                                                                                             *
+#  * @License Ends                                                                                                                               *
+#  ***********************************************************************************************************************************************
+#  *                                                                                                                                             *
+#  *  index.js implements a module for creating/deploying or deleting an AWS ClouddFormation stack with AWS-SDK for JavaScript/Node.JS V3        *
+#  *                                                                                                                                             *                                                                                                                                              * 
+#  ***********************************************************************************************************************************************
 */
 
 
