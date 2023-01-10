@@ -50,15 +50,14 @@ jobs:
         sudo free -h 
         sudo ls -ltr
         
-        
     - name: DEPLOY - Dev
-      if:  (env.DEPLOY = 'yes' &&  env.DEV = 'yes')
+      if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
       run: |
         sudo mv index-dev.js index.js 
         sudo node index.js
         
     - name: DEPLOY - Prod
-      if:  (env.DEPLOY = 'yes' && env.PROD = 'yes' )
+      if:  (env.DEPLOY == 'yes' && env.PROD == 'yes' )
       run: |
         sudo mv index-prod.js index.js 
         sudo node index.js
