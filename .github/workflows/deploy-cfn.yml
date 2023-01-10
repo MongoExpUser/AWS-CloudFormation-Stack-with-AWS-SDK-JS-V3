@@ -50,18 +50,16 @@ jobs:
         sudo free -h 
         sudo ls -ltr
         
-    - name: Rename Index File - Dev
-      if: ${{ env.DEV == 'yes' }}
+        
+    - name: DEPLOY - Dev
+      if:  (env.DEPLOY = 'yes' &&  env.DEV = 'yes')
       run: |
         sudo mv index-dev.js index.js 
+        sudo node index.js
         
-    - name: Rename Index File - Prod
-      if: ${{ env.PROD == 'yes' }}
+    - name: DEPLOY - Prod
+      if:  (env.DEPLOY = 'yes' && env.PROD = 'yes' )
       run: |
         sudo mv index-prod.js index.js 
-        
-    - name: AWS SDK DEPLOY CFN YAML/JSON File
-      if:  (env.DEPLOY == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
-      run: |
         sudo node index.js
         
