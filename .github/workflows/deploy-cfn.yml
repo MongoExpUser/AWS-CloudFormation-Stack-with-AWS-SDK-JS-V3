@@ -19,7 +19,8 @@ jobs:
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
+      # AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_REGION: "us-east-1"
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     defaults:
@@ -40,6 +41,7 @@ jobs:
         
         # check versions & show directory's contents and details
         pwd
+        echo AWS_REGION
         sudo node -v
         sudo npm -v
         sudo npm ls
@@ -50,16 +52,7 @@ jobs:
     - name: DEPLOY - Dev
       if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
       run: |
-        AWS_REGION=${{ secrets.AWS_REGION }}
-        AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
-        export AWS_REGION
-        export AWS_ACCESS_KEY_ID
-        export AWS_SECRET_ACCESS_KEY
-        
         pwd
-        printenv
         sudo mv index-dev.js index.js 
         sudo node index.js
         
