@@ -30,7 +30,7 @@ jobs:
     - uses: actions/checkout@v2
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
       
-    - name: Install Node.js v19.x & CFN-Client-V3 Module
+    - name: Install Node.js v14.x & CFN-Client-V3 Module
       run: |
         # install
         sudo apt-get -y update
