@@ -49,7 +49,7 @@ class DeployCloudFormationStack
         try
         {
             const data = await client.send(command);
-            dcfs.prettyPrint({ "data" : data } );
+            dcfs.prettyPrint({ metadata : data["$metadata"] } );
         }
         catch(error)
         {
@@ -61,7 +61,6 @@ class DeployCloudFormationStack
         await dcfs.separator();
         console.log(`Time is:`, new Date(), `.....`);
         await dcfs.separator();
-        
     }
 
     async createDeployStack(options, config)
@@ -96,7 +95,6 @@ class DeployCloudFormationStack
                 { Key: "creator", Value: creator },
             ];
 
-            
             const stackName = config.stackName;
             const stackTerminationProtection = config.stackTerminationProtection;
             const stackDescription = config.stackDescription;
@@ -129,7 +127,6 @@ class DeployCloudFormationStack
                 command = new UpdateStackCommand(params);
             }
 
-
             await dcfs.sendCommand(cloudFormationClient, command, commandName);
         }
         else if(deleteResources === true)
@@ -140,7 +137,6 @@ class DeployCloudFormationStack
             const commandName = "DeleteStack";
             await dcfs.sendCommand(cloudFormationClient, command, commandName);
         }
-
     }
     
     async separator()
