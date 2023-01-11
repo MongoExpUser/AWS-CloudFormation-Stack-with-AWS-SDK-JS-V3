@@ -58,7 +58,7 @@ on:
         sudo mv index-prod.js index.js 
         sudo node index.js
         
-        
+job:    
   start:
     name: Deploy-CFN-Start
     runs-on: ubuntu-latest
