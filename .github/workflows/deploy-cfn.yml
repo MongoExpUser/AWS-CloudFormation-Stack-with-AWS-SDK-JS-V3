@@ -172,7 +172,7 @@ jobs:
         sudo ls -ltr
         
     - name: DEPLOY - Stag
-      if:  (env.DEPLOY == 'yes') # && env.ENVIRONMENT == 'staging')
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
       run: |
         pwd
         sudo mv index-stag.js index.js 
