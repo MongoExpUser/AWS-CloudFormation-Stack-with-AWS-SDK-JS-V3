@@ -13,8 +13,8 @@ name: CI - AWS-SDK-JS-V3 Deploy CFN
 on: 
   workflow_dispatch:
     inputs:
-      version:
-        description: AWS-SDK-JS V3 CFN Deployment
+      run:
+        #description: AWS-SDK-JS V3 CFN Deployment
         default: 2.0.0
         required: true
 
