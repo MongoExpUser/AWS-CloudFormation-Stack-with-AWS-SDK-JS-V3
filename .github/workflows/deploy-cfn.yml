@@ -14,14 +14,14 @@ on:
   workflow_dispatch:
     inputs:
       Run Workflow:
-        description: Confirm Deploymeent
+        description: 'Validated'
         default: 'Yes'
         required: true
         options:
         - 'Yes'
         - 'No'
       Tags:
-        description: 'Tagging'
+        description: 'AWS-SDK-V3'
         default: true
         required: true
         type: boolean
@@ -29,7 +29,7 @@ on:
         description: 'Environment'
         type: environment
         required: true
-
+  
 jobs:
   dev:
     name: Deploy-CFN-Dev
@@ -44,6 +44,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      ENVIRONMENT: ${{ inputs.environment }}
     defaults:
       run:
         shell: bash
@@ -68,9 +69,9 @@ jobs:
         sudo df -h
         sudo free -h 
         sudo ls -ltr
-        
+
     - name: DEPLOY - Dev
-      if:  (env.DEPLOY == 'yes')
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'development')
       run: |
         pwd
         sudo mv index-dev.js index.js 
@@ -84,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: development
     env:
-      DEPLOY: 'no'
+      DEPLOY: 'yes'
       SDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
@@ -92,6 +93,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      ENVIRONMENT: ${{ inputs.environment }}
     defaults:
       run:
         shell: bash
@@ -118,7 +120,7 @@ jobs:
         sudo ls -ltr
         
     - name: DEPLOY - Stag
-      if:  (env.DEPLOY == 'yes')
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
       run: |
         pwd
         sudo mv index-stag.js index.js 
@@ -140,6 +142,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      ENVIRONMENT: ${{ inputs.environment }}
     defaults:
       run:
         shell: bash
@@ -190,7 +193,7 @@ jobs:
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
       
     - name: DEPLOY - End
-      if:  (env.DEPLOY == 'yes')
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'production')
       run: |
         pwd
         echo Enf of Deployment
