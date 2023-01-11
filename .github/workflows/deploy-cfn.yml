@@ -46,12 +46,11 @@ jobs:
         sudo free -h 
         sudo ls -ltr
         
-        # create region env variable
-        export AWS_REGION=env.AWS_REGION
-
     - name: DEPLOY - Dev
       if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
       run: |
+        export AWS_REGION=env.AWS_REGION
+        echo region is: $AWS_REGION 
         pwd
         sudo mv index-dev.js index.js 
         sudo node index.js
