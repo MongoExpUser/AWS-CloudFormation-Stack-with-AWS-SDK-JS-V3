@@ -73,8 +73,7 @@ class DeployCloudFormationStack
         const updateResources  = config.updateResources;
         const deleteResources  = config.deleteResources;
         const { CloudFormationClient, CreateStackCommand, DeleteStackCommand, UpdateStackCommand } = require("@aws-sdk/client-cloudformation");
-        //const cloudFormationClient = new CloudFormationClient(options);
-        const cloudFormationClient = new CloudFormationClient();
+        const cloudFormationClient = new CloudFormationClient(options);
 
         if( (createResources === true) || (updateResources === true) )
         {
