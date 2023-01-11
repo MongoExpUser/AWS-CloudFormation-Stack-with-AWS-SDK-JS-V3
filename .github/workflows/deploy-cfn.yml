@@ -8,8 +8,8 @@ on:
    # matches pull request for all branches and tag names
    
 jobs:
-  aws-sdk-js-v3:
-    name: AWS-SDK-JS-V3-Deploy-CFN
+  aws-sdk-js-v3-dev:
+    name: AWS-SDK-JS-V3-Deploy-CFN-Dev
     runs-on: ubuntu-latest
     environment: development
     env:
@@ -54,6 +54,55 @@ jobs:
         pwd
         sudo mv index-dev.js index.js 
         sudo node index.js
+        
+        
+  aws-sdk-js-v3-prod:
+    name: AWS-SDK-JS-V3-Deploy-CFN-Prod
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      DEV: 'yes'
+      PROD: 'no'
+      DEPLOY: 'yes'
+      SDK_INIT_DIRECTORY: 'init'
+      BASE_DIRECTORY: '/home/runner/work'
+      REPO_NAME: ${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    defaults:
+      run:
+        shell: bash
+ 
+    steps:
+    - uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+      
+    - name: Install Node.js & CFN-Client-V3 Module
+      run: |
+        # install
+        sudo apt-get -y update
+        curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
+        
+        # check versions & show directory's contents and details
+        pwd
+        sudo node -v
+        sudo npm -v
+        sudo npm ls
+        sudo df -h
+        sudo free -h 
+        sudo ls -ltr
+        
+    - name: DEPLOY - Dev
+      if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
+      run: |
+        pwd
+        sudo mv index-dev.js index.js 
+        sudo node index.js
+        
         
     #- name: DEPLOY - Prod
     #  if:  (env.DEPLOY == 'yes' && env.PROD == 'yes' )
