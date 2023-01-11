@@ -132,7 +132,7 @@ jobs:
         printenv
         pwd
         sudo mv index-dev.js index.js 
-        sudo node index-dev.js
+        sudo node index.js
   
   
   stag:
