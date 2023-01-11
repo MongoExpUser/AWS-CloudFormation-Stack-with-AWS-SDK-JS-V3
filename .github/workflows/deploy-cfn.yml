@@ -34,25 +34,7 @@ on:
     - uses: actions/checkout@v2
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
       
-    - name: Install Node.js & CFN-Client-V3 Module
-      run: |
-        # install
-        sudo apt-get -y update
-        curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
-        sudo apt-get install -y nodejs
-        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
-        sudo npm install dotenv
-        
-        # check versions & show directory's contents and details
-        pwd
-        sudo node -v
-        sudo npm -v
-        sudo npm ls
-        sudo df -h
-        sudo free -h 
-        sudo ls -ltr
-
-        
+      
 jobs:    
 
   start:
@@ -107,6 +89,7 @@ jobs:
         curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
         sudo apt-get install -y nodejs
         sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
+        sudo npm install dotenv
         
         # check versions & show directory's contents and details
         pwd
