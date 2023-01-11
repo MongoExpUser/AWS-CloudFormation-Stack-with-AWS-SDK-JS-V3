@@ -128,7 +128,8 @@ jobs:
       run: |
         export ${{ env.AWS_ACCESS_KEY_ID }}
         export ${{ env.AWS_SECRET_KEY_ID }} 
-        export {{ env.AWS_REGION }}
+        export ${{ env.AWS_REGION }}
+        printenv
         pwd
         sudo mv index-dev.js index.js 
         sudo node index.js
