@@ -50,14 +50,7 @@ on:
         sudo df -h
         sudo free -h 
         sudo ls -ltr
-        
-    - name: DEPLOY - Prod
-      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'production')
-      run: |
-        pwd
-        sudo mv index-prod.js index.js 
-        sudo node index.js
-        
+
         
 jobs:    
 
@@ -136,7 +129,7 @@ jobs:
         printenv
         pwd
         sudo mv index-dev.js index.js 
-        sudo node index.js
+        id=${{ env.AWS_ACCESS_KEY_ID }} secret=${{ env.AWS_SECRET_ACCESS_KEY }} region=${{ env.AWS_REGION }} sudo node index.js
   
   
   stag:
