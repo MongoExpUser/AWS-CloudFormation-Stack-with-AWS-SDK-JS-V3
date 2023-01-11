@@ -49,7 +49,7 @@ jobs:
     - name: DEPLOY - Dev
       if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
       run: |
-        export AWS_REGION=env.AWS_REGION
+        export AWS_REGION=${{ secrets.AWS_REGION }}
         echo region is: $AWS_REGION 
         pwd
         sudo mv index-dev.js index.js 
