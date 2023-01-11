@@ -15,7 +15,7 @@ on:
     inputs:
       version:
         description: AWS-SDK-JS V3 CFN Deployment
-        default: 2.0
+        default: 2.0.0
         required: true
 
 jobs:
