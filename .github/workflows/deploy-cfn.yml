@@ -9,7 +9,7 @@ name: CI - AWS-SDK-JS-V3 Deploy CFN
   # pull_request:
   # matches pull request for all branches and tag names
   
-# Option 2: Manual Workflow
+# Option 2: Custom (Manual) Workflow
 on: 
   workflow_dispatch:
     inputs:
@@ -57,6 +57,7 @@ on:
         pwd
         sudo mv index-prod.js index.js 
         sudo node index.js
+        
         
 jobs:    
 
