@@ -9,7 +9,7 @@ on:
    
 jobs:
   dev:
-    name: AWS-SDK-JS-V3-Deploy-CFN-Dev
+    name: Deploy-CFN-Dev
     runs-on: ubuntu-latest
     environment: development
     env:
@@ -53,10 +53,11 @@ jobs:
         sudo mv index-dev.js index.js 
         sudo node index.js
   
+  
   stag:
     if: ${{ always() }}
     needs: [dev]
-    name: AWS-SDK-JS-V3-Deploy-CFN-Stg
+    name: Deploy-CFN-Stg
     runs-on: ubuntu-latest
     environment: development
     env:
@@ -100,10 +101,11 @@ jobs:
         sudo mv index-stag.js index.js 
         sudo node index.js
         
+        
   prod:
     if: ${{ always() }}
     needs: [dev]
-    name: AWS-SDK-JS-V3-Deploy-CFN-Prod
+    name: Deploy-CFN-Prod
     runs-on: ubuntu-latest
     environment: production
     env:
@@ -147,10 +149,11 @@ jobs:
         sudo mv index-prod.js index.js 
         sudo node index.js
         
+        
   end:
     if: ${{ always() }}
     needs: [stag, prod]
-    name: AWS-SDK-JS-V3-Deploy-CFN-End
+    name: Deploy-CFN-End
     runs-on: ubuntu-latest
     environment: ending
     env:
