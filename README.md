@@ -66,7 +66,7 @@ The  script can execute the followings:
     * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/.github/workflows/deploy-cfn.yml
   
 2)  #### Also fill relevant values in the inputConfig.json file.
-    * Ensure that the environment (dev or prod) and region in the file correspond to the values in the GitHub Actions YML file. <br>
+    * Ensure that the environment (dev, stag or prod) and region in the file correspond to the values in the GitHub Actions YML file. <br>
   
 3)  #### Add the credentials to the GitHub Secrets instead of in the credentials.json file.
 
