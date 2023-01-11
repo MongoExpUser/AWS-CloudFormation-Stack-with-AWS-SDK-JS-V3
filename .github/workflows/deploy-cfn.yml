@@ -29,11 +29,7 @@ on:
         description: 'Environment'
         type: environment
         required: true
-        options:
-        - 'development'
-        - 'staging'
-        - 'production'
-        - 'ending'
+
   
 jobs:
   dev:
@@ -125,7 +121,8 @@ jobs:
         sudo ls -ltr
         
     - name: DEPLOY - Stag
-      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
+      #if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
+      if:  (env.DEPLOY == 'yes')
       run: |
         pwd
         sudo mv index-stag.js index.js 
