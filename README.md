@@ -62,13 +62,13 @@ The  script can execute the followings:
 
 ### To deploy the stack  on ```AWS```, follow these steps:
 
-1)  #### Check and file in relevant values in the GitHub Actions YML deployment file.
+1)  #### Check and fill relevant values in the GitHub Actions YML deployment file.
     * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/.github/workflows/deploy-cfn.yml
   
-2)  #### Also fill in relevant values in the inputConfig.json file.
-    * Ensure that the environment (dev or prod) and region in the file correspond to the values in the GitHub Actions YAML file. <br>
+2)  #### Also fill relevant values in the inputConfig.json file.
+    * Ensure that the environment (dev or prod) and region in the file correspond to the values in the GitHub Actions YML file. <br>
   
-3)  #### Add the credentials to the GitHub Secret instead of in the credentials.json file.
+3)  #### Add the credentials to the GitHub Secrets instead of in the credentials.json file.
 
 4)  #### Then enable GitHub Actions Workflow and run the YML file.
     * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/actions <br><b>
