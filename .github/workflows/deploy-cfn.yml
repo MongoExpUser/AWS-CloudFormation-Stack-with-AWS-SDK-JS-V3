@@ -78,11 +78,11 @@ jobs:
       if:  (env.DEPLOY == 'yes')
       run: |
         pwd
-        echo End of Deployment
+        echo Start of Deployment
 
 
   dev:
-    if: ${{ always() }}
+    # if: ${{ always() }}
     needs: [start]
     name: Deploy-CFN-Dev
     runs-on: ubuntu-latest
@@ -125,7 +125,6 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-         aws-region: ${{ secrets.AWS_REGION }}
          aws-access-key-id : ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -239,7 +238,7 @@ jobs:
         
   end:
     #if: ${{ always() }}
-    if: ${{ false }}  # disable job
+    #if: ${{ false }}  # disable job
     needs: [dev, stag, prod]
     name: Deploy-CFN-End
     runs-on: ubuntu-latest
