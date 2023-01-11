@@ -6,11 +6,12 @@ on:
     - main
   pull_request:
    # matches pull request for all branches and tag names
-
+   
 jobs:
   aws-sdk-js-v3:
     name: AWS-SDK-JS-V3-Deploy-CFN
     runs-on: ubuntu-latest
+    environment: development
     env:
       DEV: 'yes'
       PROD: 'no'
@@ -54,9 +55,9 @@ jobs:
         sudo mv index-dev.js index.js 
         sudo node index.js
         
-    - name: DEPLOY - Prod
-      if:  (env.DEPLOY == 'yes' && env.PROD == 'yes' )
-      run: |
-        pwd
-        sudo mv index-prod.js index.js 
-        sudo node index.js
+    #- name: DEPLOY - Prod
+    #  if:  (env.DEPLOY == 'yes' && env.PROD == 'yes' )
+    #  run: |
+    #    pwd
+    #    sudo mv index-prod.js index.js 
+    #    sudo node index.js
