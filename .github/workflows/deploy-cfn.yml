@@ -29,6 +29,11 @@ on:
         description: 'Environment'
         type: environment
         required: true
+        options:
+        - 'development'
+        - 'staging'
+        - 'production'
+        - 'ending'
   
 jobs:
   dev:
