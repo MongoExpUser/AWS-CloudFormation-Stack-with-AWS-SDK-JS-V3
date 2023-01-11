@@ -8,7 +8,7 @@ on:
    # matches pull request for all branches and tag names
    
 jobs:
-  aws-sdk-js-v3-dev:
+  dev:
     name: AWS-SDK-JS-V3-Deploy-CFN-Dev
     runs-on: ubuntu-latest
     environment: development
@@ -54,8 +54,9 @@ jobs:
         sudo node index.js
         
         
-  aws-sdk-js-v3-prod:
-    needs: aws-sdk-js-v3-dev
+  prod:
+    if: ${{ always() }}
+    needs: [dev]
     name: AWS-SDK-JS-V3-Deploy-CFN-Prod
     runs-on: ubuntu-latest
     environment: production
@@ -99,3 +100,4 @@ jobs:
         pwd
         sudo mv index-prod.js index.js 
         sudo node index.js
+        
