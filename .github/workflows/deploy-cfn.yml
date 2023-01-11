@@ -30,27 +30,25 @@ jobs:
     - uses: actions/checkout@v2
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
       
-    - name: Install Node.js and CFN-Client-V3 Module
+    - name: Install Node.js v19.x & CFN-Client-V3 Module
       run: |
+        # install
         sudo apt-get -y update
         curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
         sudo apt-get install -y nodejs
+        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
         
-        # check versions
+        # check versions & show directory's contents and details
         sudo node -v
         sudo npm -v
-        
-        # create init/base directory & install Node.js module(s) & list install module(s)
-        #sudo mkdir $SDK_INIT_DIRECTORY
-        #cd $SDK_INIT_DIRECTORY
-        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
         sudo npm ls
-
-        # show details of the directory content
         sudo df -h
         sudo free -h 
         sudo ls -ltr
         
+        # create region env variable
+        export AWS_REGION=env.AWS_REGION
+
     - name: DEPLOY - Dev
       if:  (env.DEPLOY == 'yes' &&  env.DEV == 'yes')
       run: |
@@ -64,4 +62,3 @@ jobs:
         pwd
         sudo mv index-prod.js index.js 
         sudo node index.js
-
