@@ -159,7 +159,7 @@ class DeployCloudFormationStack
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     const credentialJsonFilePath = inputConfig.credentials;
     let credentials =  JSON.parse(fs.readFileSync(credentialJsonFilePath));
-    const region = process.env.AWS_REGION;
+    const region = "us-east-1"; //process.env.AWS_REGION;
     let options = { region: region };
     const config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     await dcfs.createDeployStack(options, config);
