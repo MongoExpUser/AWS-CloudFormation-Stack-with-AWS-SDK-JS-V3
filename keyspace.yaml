@@ -21,7 +21,7 @@ Parameters:
     
   KeyspaceName:
     Type: String
-    Default: subsurface
+    Default: unconventional
   
   KeyspaceTableNameOne:
     Type: String
@@ -85,7 +85,7 @@ Resources:
   OrgKeyspace:
     Type: AWS::Cassandra::Keyspace
     Properties:
-      KeyspaceName: !Sub ${KeyspaceName}-${Environment}
+      KeyspaceName: !Sub ${KeyspaceName}
       Tags:
         - Key: !Sub ${KeyspaceNameTagKey}
           Value: !Sub ${OrgName}-${Environment}-${KeyspaceName}
