@@ -11,7 +11,7 @@
     "stackTemplateBodyFileName" : "keyspace.yaml",
     "stackTemplateURL" : "bucketName - this is an alternative to 'stackTemplateBody'",
     "credentials" : "credentials.json",
-    "createResources" : false,
+    "createResources" : true,
     "updateResources" : false,
-    "deleteResources" : true
+    "deleteResources" : false
 }
