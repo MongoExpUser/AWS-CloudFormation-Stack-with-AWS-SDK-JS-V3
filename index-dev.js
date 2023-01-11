@@ -73,7 +73,8 @@ class DeployCloudFormationStack
         const updateResources  = config.updateResources;
         const deleteResources  = config.deleteResources;
         const { CloudFormationClient, CreateStackCommand, DeleteStackCommand, UpdateStackCommand } = require("@aws-sdk/client-cloudformation");
-        const cloudFormationClient = new CloudFormationClient(options);
+        //const cloudFormationClient = new CloudFormationClient(options);
+        const cloudFormationClient = new CloudFormationClient({region: options.region});
 
         if( (createResources === true) || (updateResources === true) )
         {
@@ -163,7 +164,6 @@ class DeployCloudFormationStack
     let accessKeyId = process.env.AWS_ACCESS_KEY_ID;
     let secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
     let options = { credentials: { accessKeyId : accessKeyId, secretAccessKey: secretAccessKey }, region: region };
-    //let options = { region: region, credentials: { accessKeyId : accessKeyId, secretAccessKey: secretAccessKey, clientConfig: { region: region } }  };
     const config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     await dcfs.createDeployStack(options, config);
 }());
