@@ -132,6 +132,7 @@ jobs:
   
   stag:
     if: ${{ always() }}
+        ${{ false }}  # disable job
     needs: [start]
     name: Deploy-CFN-Stg
     runs-on: ubuntu-latest
@@ -181,6 +182,7 @@ jobs:
         
   prod:
     if: ${{ always() }}
+        ${{ false }}  # disable job
     needs: [start]
     name: Deploy-CFN-Prod
     runs-on: ubuntu-latest
@@ -246,6 +248,7 @@ jobs:
       
     - name: DEPLOY - End
       if:  (env.DEPLOY == 'yes')
+           ${{ false }}  # disable step
       run: |
         pwd
         echo End of Deployment
