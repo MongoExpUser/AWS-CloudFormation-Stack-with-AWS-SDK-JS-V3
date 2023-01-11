@@ -122,14 +122,10 @@ jobs:
         export AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
         export AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }} 
         export AWS_REGION=${{ env.AWS_REGION }}
-        
-        export id=${{ env.AWS_ACCESS_KEY_ID }}
-        export secret=${{ env.AWS_SECRET_ACCESS_KEY }} 
-        export region=${{ env.AWS_REGION }}
-        printenv
-        pwd
+        # printenv
+        # pwd
         sudo mv index-dev.js index.js 
-        id=${{ env.AWS_ACCESS_KEY_ID }} secret=${{ env.AWS_SECRET_ACCESS_KEY }} region=${{ env.AWS_REGION }} sudo node index.js
+        sudo node index.js
   
   
   stag:
