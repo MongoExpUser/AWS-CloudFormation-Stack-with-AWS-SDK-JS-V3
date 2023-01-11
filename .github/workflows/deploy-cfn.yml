@@ -29,9 +29,60 @@ on:
         description: 'Environment'
         type: environment
         required: true
+        
+    steps:
+    - uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+      
+    - name: Install Node.js & CFN-Client-V3 Module
+      run: |
+        # install
+        sudo apt-get -y update
+        curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
+        
+        # check versions & show directory's contents and details
+        pwd
+        sudo node -v
+        sudo npm -v
+        sudo npm ls
+        sudo df -h
+        sudo free -h 
+        sudo ls -ltr
+        
+    - name: DEPLOY - Prod
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'production')
+      run: |
+        pwd
+        sudo mv index-prod.js index.js 
+        sudo node index.js
+        
+        
+  start:
+    name: Deploy-CFN-Start
+    runs-on: ubuntu-latest
+    environment: starting
+    env:
+      DEPLOY: 'yes'
+    defaults:
+      run:
+        shell: bash
+ 
+    steps:
+    - uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+      
+    - name: DEPLOY - Start
+      if:  (env.DEPLOY == 'yes')
+      run: |
+        pwd
+        echo End of Deployment
 
 jobs:
   dev:
+    if: ${{ always() }}
+    needs: [start]
     name: Deploy-CFN-Dev
     runs-on: ubuntu-latest
     environment: development
@@ -80,7 +131,7 @@ jobs:
   
   stag:
     if: ${{ always() }}
-    needs: [dev]
+    needs: [start]
     name: Deploy-CFN-Stg
     runs-on: ubuntu-latest
     environment: staging
@@ -120,7 +171,7 @@ jobs:
         sudo ls -ltr
         
     - name: DEPLOY - Stag
-      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
+      if:  (env.DEPLOY == 'yes') # && env.ENVIRONMENT == 'staging')
       run: |
         pwd
         sudo mv index-stag.js index.js 
@@ -129,7 +180,7 @@ jobs:
         
   prod:
     if: ${{ always() }}
-    needs: [dev]
+    needs: [start]
     name: Deploy-CFN-Prod
     runs-on: ubuntu-latest
     environment: production
@@ -169,7 +220,7 @@ jobs:
         sudo ls -ltr
         
     - name: DEPLOY - Prod
-      if:  (env.DEPLOY == 'yes')
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'production')
       run: |
         pwd
         sudo mv index-prod.js index.js 
@@ -178,7 +229,7 @@ jobs:
         
   end:
     if: ${{ always() }}
-    needs: [stag, prod]
+    needs: [dev, stag, prod]
     name: Deploy-CFN-End
     runs-on: ubuntu-latest
     environment: ending
@@ -193,8 +244,8 @@ jobs:
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
       
     - name: DEPLOY - End
-      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'production')
+      if:  (env.DEPLOY == 'yes')
       run: |
         pwd
-        echo Enf of Deployment
+        echo End of Deployment
         
