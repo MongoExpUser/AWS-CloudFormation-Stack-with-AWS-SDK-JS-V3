@@ -123,6 +123,10 @@ jobs:
         sudo ls -ltr
 
     - name: DEPLOY - Dev
+      with:
+         aws-region: ${{ secrets.AWS_REGION }}
+         aws-access-key-id : ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'development')
       run: |
         pwd
@@ -131,8 +135,8 @@ jobs:
   
   
   stag:
-    if: ${{ always() }}
-        ${{ false }}  # disable job
+    #if: ${{ always() }}
+    if: ${{ false }}  # disable job
     needs: [start]
     name: Deploy-CFN-Stg
     runs-on: ubuntu-latest
@@ -181,8 +185,8 @@ jobs:
         
         
   prod:
-    if: ${{ always() }}
-        ${{ false }}  # disable job
+    #if: ${{ always() }}
+    if: ${{ false }}  # disable job
     needs: [start]
     name: Deploy-CFN-Prod
     runs-on: ubuntu-latest
@@ -231,7 +235,8 @@ jobs:
         
         
   end:
-    if: ${{ always() }}
+    #if: ${{ always() }}
+    if: ${{ false }}  # disable job
     needs: [dev, stag, prod]
     name: Deploy-CFN-End
     runs-on: ubuntu-latest
@@ -248,7 +253,6 @@ jobs:
       
     - name: DEPLOY - End
       if:  (env.DEPLOY == 'yes')
-           ${{ false }}  # disable step
       run: |
         pwd
         echo End of Deployment
