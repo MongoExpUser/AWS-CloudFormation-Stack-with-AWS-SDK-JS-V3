@@ -20,12 +20,13 @@ on:
         options:
         - 'Yes'
         - 'No'
-      tags:
+      Tags:
         description: 'Tagging'
-        required: false
+        default: true
+        required: true
         type: boolean
-      environment:
-        description: 'Environment for run'
+      Environment:
+        description: 'Environment'
         type: environment
         required: true
 
