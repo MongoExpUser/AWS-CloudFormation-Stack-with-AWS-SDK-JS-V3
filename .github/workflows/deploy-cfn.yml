@@ -30,7 +30,6 @@ on:
         type: environment
         required: true
 
-  
 jobs:
   dev:
     name: Deploy-CFN-Dev
@@ -84,7 +83,7 @@ jobs:
     needs: [dev]
     name: Deploy-CFN-Stg
     runs-on: ubuntu-latest
-    environment: development
+    environment: staging
     env:
       DEPLOY: 'yes'
       SDK_INIT_DIRECTORY: 'init'
@@ -121,8 +120,7 @@ jobs:
         sudo ls -ltr
         
     - name: DEPLOY - Stag
-      #if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
-      if:  (env.DEPLOY == 'yes')
+      if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
       run: |
         pwd
         sudo mv index-stag.js index.js 
