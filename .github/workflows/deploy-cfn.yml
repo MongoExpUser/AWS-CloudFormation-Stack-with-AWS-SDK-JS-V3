@@ -36,7 +36,6 @@ jobs:
         sudo apt-get -y update
         curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
         sudo apt-get install -y nodejs
-        sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME aws-sdk
         sudo npm install  --prefix $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME @aws-sdk/client-cloudformation
         
         # check versions & show directory's contents and details
