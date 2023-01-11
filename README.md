@@ -58,7 +58,7 @@ The  script can execute the followings:
    
    
    
-## OPTION 2: Through GitHub Action
+## OPTION 2: Through GitHub Actions
 
 ### To deploy the stack  on ```AWS```, follow these steps:
 
