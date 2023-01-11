@@ -1,12 +1,21 @@
 name: CI - AWS-SDK-JS-V3 Deploy CFN
 
-on: [workflow_dispatch]
+# option 1: Auto Workflow
+#on: 
+  # option 1: Auto Workflow
   #push:
   #  branches:
   #  - main
   # pull_request:
   # matches pull request for all branches and tag names
   
+# option 2: Manual Workflow
+on: [workflow_dispatch]:
+  inputs:
+    version:
+      description: AWS-SDK-JS V3 CFN Deployment
+      version: 2.0
+      required: true
 
 jobs:
   dev:
