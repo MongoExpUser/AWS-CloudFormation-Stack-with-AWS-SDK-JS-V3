@@ -41,7 +41,7 @@ jobs:
         
         # check versions & show directory's contents and details
         pwd
-        echo my region is: $AWS_REGION
+        echo "my region is:" + env.AWS_REGION
         sudo node -v
         sudo npm -v
         sudo npm ls
