@@ -29,8 +29,10 @@ The  script can execute the followings:
     
 * The sample stack (<strong>keyspace.yaml</strong> file) in this repository is for creating/deploying, updating and deleting an AWS Keyspace and Tables (for Apache Cassandra), used in real-time drilling, reservoir and production applications. <br><br>
     
-
+    
 ## DEPLOYING STACK with the NodeJS script
+
+## OPTION 1: Cloned to Local Computer
 
 ### To deploy the stack  on ```AWS```, follow these steps:
 
@@ -45,14 +47,32 @@ The  script can execute the followings:
    * CloudFormation YAML input file:  keyspace.yaml <br>
    
 
-3) #### Fill in relevant values in inputConfig.json files.<br>
+3) #### Fill in relevant values in inputConfig.json file.<br>
    * <strong>References for inputConfig.json </strong>:
      1) https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-cloudformation/interfaces/createstackcommandinput.html
      2) https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-cloudformation/interfaces/deletestackcommandinput.html
      3) https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-cloudformation/interfaces/updatestackcommandinput.html
 
 4) #### Then run the code, assuming sudo access: <br>
-   * sudo node index.js
+   * sudo node index.js <br><br>
+   
+   
+   
+## OPTION 2: Through GitHub Action
+
+### To deploy the stack  on ```AWS```, follow these steps:
+
+1)  #### Check and file in relevant values in the GitHub Actions YML deployment file.
+    * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/.github/workflows/deploy-cfn.yml
+  
+2)  #### Also fill in relevant values in the inputConfig.json file.
+    * Ensure that the environment (dev or prod) and region in the file correspond to the values in the GitHub Actions YAML file. <br>
+  
+3)  #### Add the credentials to the GitHub Secret instead of in the credentials.json file.
+
+4)  #### Then enable GitHub Actions Workflow and run the YML file.
+    * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/actions <br><b>
+  
 
 
 # License
