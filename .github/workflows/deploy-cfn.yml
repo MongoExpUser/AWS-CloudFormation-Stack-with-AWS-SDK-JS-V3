@@ -121,12 +121,15 @@ jobs:
         sudo df -h
         sudo free -h 
         sudo ls -ltr
-
-    - name: DEPLOY - Dev
+        
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
          aws-region: ${{ secrets.AWS_REGION }}
          aws-access-key-id : ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: DEPLOY - Dev
       if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'development')
       run: |
         pwd
