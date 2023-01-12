@@ -1,5 +1,4 @@
-/*
-#  ***********************************************************************************************************************************************
+/*************************************************************************************************************************************************
 #  *                                                                                                                                             *
 #  * @License Starts                                                                                                                             *
 #  *                                                                                                                                             *
@@ -8,12 +7,13 @@
 #  * License: MIT - https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/LICENSE                                *
 #  *                                                                                                                                             *
 #  * @License Ends                                                                                                                               *
+#  *                                                                                                                                             *
+#  *                                                                                                                                             *
 #  ***********************************************************************************************************************************************
 #  *                                                                                                                                             *
-#  *  index.js implements a module for creating/deploying or deleting an AWS ClouddFormation stack with AWS-SDK for JavaScript/Node.JS V3        *
-#  *                                                                                                                                             *                                                                                                                                              * 
-#  ***********************************************************************************************************************************************
-*/
+#  *  index.js implements a module for creating/deploying or deleting an AWS ClouddFormation stack with AWS-SDK for JavaScript/Node.JS V3        * 
+#  *                                                                                                                                             *
+# ***********************************************************************************************************************************************/
 
 
 class DeployCloudFormationStack
@@ -49,7 +49,7 @@ class DeployCloudFormationStack
         try
         {
             const data = await client.send(command);
-            dcfs.prettyPrint({ "data" : data } );
+            dcfs.prettyPrint({ metadata : data["$metadata"] } );
         }
         catch(error)
         {
@@ -61,7 +61,6 @@ class DeployCloudFormationStack
         await dcfs.separator();
         console.log(`Time is:`, new Date(), `.....`);
         await dcfs.separator();
-        
     }
 
     async createDeployStack(options, config)
@@ -96,7 +95,6 @@ class DeployCloudFormationStack
                 { Key: "creator", Value: creator },
             ];
 
-            
             const stackName = config.stackName;
             const stackTerminationProtection = config.stackTerminationProtection;
             const stackDescription = config.stackDescription;
@@ -129,7 +127,6 @@ class DeployCloudFormationStack
                 command = new UpdateStackCommand(params);
             }
 
-
             await dcfs.sendCommand(cloudFormationClient, command, commandName);
         }
         else if(deleteResources === true)
@@ -140,7 +137,6 @@ class DeployCloudFormationStack
             const commandName = "DeleteStack";
             await dcfs.sendCommand(cloudFormationClient, command, commandName);
         }
-
     }
     
     async separator()
