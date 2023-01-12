@@ -1,7 +1,27 @@
+#  ***********************************************************************************************************************************************
+#  *                                                                                                                                             *
+#  * @License Starts                                                                                                                             *
+#  *                                                                                                                                             *
+#  * Copyright © 2015 - present. MongoExpUser.  All Rights Reserved.                                                                             *
+#  *                                                                                                                                             *
+#  * License: MIT - https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/LICENSE                                *
+#  *                                                                                                                                             *
+#  * @License Ends                                                                                                                               *
+#  *                                                                                                                                             *
+#  *                                                                                                                                             *
+#  ***********************************************************************************************************************************************
+#  *                                                                                                                                             *
+#  *  The YAML file implements a Workflow for the deployment of AWS CloudFormation YAML/JSON template with AWS-SDK V3                            *
+#  *                                                                                                                                             *
+#  ***********************************************************************************************************************************************
+
+
+
+
 name: CI - AWS-SDK-JS-V3 Deploy CFN
 
 # Option 1: Auto Workflow
-#on: 
+#on:
   # option 1: Auto Workflow
   #push:
   #  branches:
@@ -10,7 +30,7 @@ name: CI - AWS-SDK-JS-V3 Deploy CFN
   # matches pull request for all branches and tag names
   
 # Option 2: Custom (Manual) Workflow
-on: 
+on:
   workflow_dispatch:
     inputs:
       Run Workflow:
@@ -35,7 +55,7 @@ on:
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
       
       
-jobs:    
+jobs:
 
   start:
     name: Deploy-CFN-Start
@@ -56,8 +76,6 @@ jobs:
       run: |
         pwd
         echo Start of Deployment
-
-
   dev:
     # if: ${{ always() }}
     needs: [start]
@@ -96,7 +114,7 @@ jobs:
         sudo npm -v
         sudo npm ls
         sudo df -h
-        sudo free -h 
+        sudo free -h
         sudo ls -ltr
            
     - name: Deploy - Dev
@@ -104,11 +122,11 @@ jobs:
       run: |
         # persist credentials
         echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }} 
+        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION=${{ env.AWS_REGION }}
         ' > .env
         # run code
-        sudo mv index-dev.js index.js 
+        sudo mv index-dev.js index.js
         sudo node index.js
   
   
@@ -151,7 +169,7 @@ jobs:
         sudo npm -v
         sudo npm ls
         sudo df -h
-        sudo free -h 
+        sudo free -h
         sudo ls -ltr
         
     - name: Deploy - Stag
@@ -159,11 +177,11 @@ jobs:
       run: |
         # persist credentials
         echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }} 
+        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION=${{ env.AWS_REGION }}
         ' > .env
         # run code
-        sudo mv index-dev.js index.js 
+        sudo mv index-dev.js index.js
         sudo node index.js
   
       
@@ -206,7 +224,7 @@ jobs:
         sudo npm -v
         sudo npm ls
         sudo df -h
-        sudo free -h 
+        sudo free -h
         sudo ls -ltr
         
     - name: Deploy - Prod
@@ -214,11 +232,11 @@ jobs:
       run: |
         # persist credentials
         echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }} 
+        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION=${{ env.AWS_REGION }}
         ' > .env
         # run code
-        sudo mv index-dev.js index.js 
+        sudo mv index-dev.js index.js
         sudo node index.js
   
         
@@ -245,4 +263,5 @@ jobs:
       run: |
         pwd
         echo End of Deployment
+
         
