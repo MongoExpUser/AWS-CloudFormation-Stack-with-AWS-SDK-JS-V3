@@ -11,7 +11,7 @@
 #  *                                                                                                                                             *
 #  ***********************************************************************************************************************************************
 #  *                                                                                                                                             *
-#  *  The YAML file implements a Workflow for the deployment of AWS CloudFormation YAML/JSON template with AWS-SDK V3                            *
+#  *  The YAML file implements a Workflow for the deployment of AWS CloudFormation YAML/JSON template with AWS SDK for JavaScript/NodeJS v3      *
 #  *                                                                                                                                             *
 #  ***********************************************************************************************************************************************
 
