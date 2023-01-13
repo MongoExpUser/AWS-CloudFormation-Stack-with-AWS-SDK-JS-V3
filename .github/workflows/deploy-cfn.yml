@@ -50,10 +50,6 @@ on:
         type: environment
         required: true
         
-    steps:
-    - uses: actions/checkout@v2
-      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
-      
       
 jobs:
 
@@ -76,6 +72,8 @@ jobs:
       run: |
         pwd
         echo Start of Deployment
+        
+        
   dev:
     # if: ${{ always() }}
     needs: [start]
@@ -120,15 +118,12 @@ jobs:
     - name: Deploy - Dev
       if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'development')
       run: |
-        # persist credentials
+        # persist credentials & run code
         echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION=${{ env.AWS_REGION }}
-        #' > .env
-        
-        # run code
-        sudo mv index-dev.js index.js
-        sudo node index.js
+        ' > .env
+        sudo node gh-actions-index.js
   
   
   stag:
@@ -176,15 +171,12 @@ jobs:
     - name: Deploy - Stag
       if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'staging')
       run: |
-        # persist credentials
+        # persist credentials & run code
         echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION=${{ env.AWS_REGION }}
         ' > .env
-        
-        # run code
-        sudo mv index-dev.js index.js
-        sudo node index.js
+        sudo node gh-actions-index.js
   
       
   prod:
@@ -232,17 +224,13 @@ jobs:
     - name: Deploy - Prod
       if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'production')
       run: |
-        # persist credentials
+        # persist credentials & run code
         echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION=${{ env.AWS_REGION }}
         ' > .env
-        
-        # run code
-        sudo mv index-dev.js index.js
-        sudo node index.js
+        sudo node gh-actions-index.js
   
-        
         
   end:
     #if: ${{ always() }}
@@ -267,4 +255,4 @@ jobs:
         pwd
         echo End of Deployment
 
-        
+      
