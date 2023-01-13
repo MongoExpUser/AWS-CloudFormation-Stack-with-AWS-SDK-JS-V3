@@ -149,16 +149,16 @@ class DeployCloudFormationStack
 (async function main()
 {
     const fs = require("fs");
-    //require("dotenv").config(); // for reading environmental variables
+    require("dotenv").config(); // for reading environmental variables
     const dcfs = new DeployCloudFormationStack(); 
     const inputConfigJsonFilePath = "inputConfig.json";
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
-    const credentialJsonFilePath = inputConfig.credentials;
-    let credentials =  JSON.parse(fs.readFileSync(credentialJsonFilePath));
-    let region = credentials.region; // process.env.AWS_REGION;
-    let accessKeyId = credentials.accessKeyId; // process.env.AWS_ACCESS_KEY_ID;
-    let secretAccessKey = credentials.secretAccessKe; // process.env.AWS_SECRET_ACCESS_KEY;
+    let credentialJsonFilePath = inputConfig.credentials;
+    // let credentials =  JSON.parse(fs.readFileSync(credentialJsonFilePath));
+    let region =  process.env.AWS_REGION;
+    let accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+    let secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
     let options = { credentials: { accessKeyId : accessKeyId, secretAccessKey: secretAccessKey }, region: region };
-    const config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
+    let config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     await dcfs.createDeployStack(options, config);
 }());
