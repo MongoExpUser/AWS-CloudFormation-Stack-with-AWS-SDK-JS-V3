@@ -12,6 +12,6 @@
     "stackTemplateURL" : "bucketName - this is an alternative to 'stackTemplateBody'",
     "credentials" : "credentials.json",
     "createResources" : false,
-    "updateResources" : true,
-    "deleteResources" : false
+    "updateResources" : false,
+    "deleteResources" : true
 }
