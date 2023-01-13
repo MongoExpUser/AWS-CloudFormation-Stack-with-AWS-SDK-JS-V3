@@ -149,7 +149,7 @@ class DeployCloudFormationStack
 (async function main()
 {
     const fs = require("fs");
-    require("dotenv").config(); // for reading environmental variables
+    //require("dotenv").config(); // for reading environmental variables
     const dcfs = new DeployCloudFormationStack(); 
     const inputConfigJsonFilePath = "inputConfig.json";
     let inputConfig = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
