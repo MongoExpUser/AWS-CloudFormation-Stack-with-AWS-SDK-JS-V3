@@ -121,10 +121,20 @@ jobs:
       if:  (env.DEPLOY == 'yes' && env.ENVIRONMENT == 'development')
       run: |
         # persist credentials
-        echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION=${{ env.AWS_REGION }}
-        ' > .env
+        #echo 'AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
+        #AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
+        #AWS_REGION=${{ env.AWS_REGION }}
+        #' > .env
+        
+        # persist credentials
+        echo '{
+          "credentials" : {
+            "accessKeyId" : "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}"
+            "secretAccessKey" : "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}"
+          }
+          "region" : AWS_REGION=${{ env.AWS_REGION }}
+        ' > credentials.json
+        
         # run code
         sudo mv index-dev.js index.js
         sudo node index.js
