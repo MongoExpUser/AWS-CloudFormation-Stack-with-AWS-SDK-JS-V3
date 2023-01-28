@@ -22,7 +22,6 @@ name: CI - AWS-SDK-JS-V3 Deploy CFN
 
 # Option 1: Auto Workflow
 #on:
-  # option 1: Auto Workflow
   #push:
   #  branches:
   #  - main
