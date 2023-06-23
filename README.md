@@ -32,7 +32,7 @@ The  script can execute the followings:
     
 ## DEPLOYING STACK with the NodeJS script
 
-## OPTION 1: Cloned to Local Computer
+## OPTION 1: Clone to Local Computer
 
 ### To deploy the stack  on ```AWS```, follow these steps:
 
@@ -68,7 +68,9 @@ The  script can execute the followings:
 2)  #### Also fill relevant values in the inputConfig.json file.
     * Ensure that the environment (dev, stag or prod) and region in the file correspond to the values in the GitHub Actions YML file. <br>
   
-3)  #### Add the credentials to the GitHub Secrets instead of in the credentials.json file.
+3)  #### Add the actual values for credentials to the GitHub Secrets.
+    * These include: <strong> accessKeyId, secretAccessKey and region.</strong>
+    * This prevents exposure of the credentials.
 
 4)  #### Then enable GitHub Actions Workflow and run the YML file.
     * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/actions <br><b>
