@@ -60,7 +60,7 @@ The  script can execute the followings:
    
 ## OPTION 2: Through GitHub Actions
 
-### This option has the benefits of CICD in general. To deploy the stack  on ```AWS```, via GitHub action, follow these steps:
+### This option has the benefits of CICD in general. To deploy the stack via GitHub action, follow these steps:
 
 1)  #### Check and fill relevant values in the GitHub Actions YML deployment file.
     * Link: https://github.com/MongoExpUser/AWS-CloudFormation-Stack-with-AWS-SDK-JS-V3/blob/main/.github/workflows/deploy-cfn.yml
