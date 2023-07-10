@@ -19,7 +19,7 @@ The  script can execute the followings:
 
 ## PURPOSE
 
-* Normally an AWS CloudFormation stack can be deployed via AWS CloudFormation console. <br>
+* Normally an AWS CloudFormation stack can be deployed via AWS CloudFormation console or AWS CLI. <br>
     
 * An AWS CloudFormation stack can also be deployed via AWS SDK in any language of choice. <br>
     
