@@ -97,13 +97,14 @@ class DeployCloudFormationStack
                 { Key: "creator", Value: creator },
             ];
 
-            
             const stackName = config.stackName;
             const stackTerminationProtection = config.stackTerminationProtection;
-            const stackDescription = config.stackDescription;
-            const stackTemplateBodyInput = config.stackTemplateBodyFileName;
+            const stackTemplateBodyInput = config.stackTemplateBodyFileName; 
             console.log(stackTemplateBodyInput);
             const stackTemplateBody =  JSON.parse(JSON.stringify(fs.readFileSync(stackTemplateBodyInput).toString()));
+            const stackCapabilities = config.stackCapabilities;
+            const stackOnFailure =  config.stackOnFailure;
+            const stackTimeoutInMinutes = config.stackTimeoutInMinutes;
 
             if(addSuffix === true)
             {
@@ -114,7 +115,16 @@ class DeployCloudFormationStack
                 tags.push( { Key: "name", Value: `${preOrPostFix}-${resoureName}` } );
             }
         
-            let params = { EnableTerminationProtection: stackTerminationProtection, StackName: stackName, TemplateBody: stackTemplateBody, Tags: tags };
+            let params = { 
+                StackName: stackName, 
+                EnableTerminationProtection: stackTerminationProtection, 
+                TemplateBody: stackTemplateBody, 
+                Capabilities: config.stackCapabilities,
+                OnFailure: config.stackOnFailure,
+                TimeoutInMinutes: config.stackTimeoutInMinutes,
+                Tags: tags 
+            };   
+            
             let commandName;
             let command;
 
