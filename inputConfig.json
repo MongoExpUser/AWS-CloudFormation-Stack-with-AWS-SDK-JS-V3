@@ -7,7 +7,6 @@
     "creator" : "info@domain.com",
     "stackName": "rt-subsurface-analysis-dev",
     "stackTerminationProtection": false,
-    "stackDescription": "Deploy AWS Keyspaces (for Apache Cassandra) for Drilling, Reservoir & Production Applications.",
     "stackTemplateBodyFileName" : "keyspace.yaml",
     "stackTemplateURL" : "bucketName - this is an alternative to 'stackTemplateBody'",
     "stackCapabilities" :  [ "CAPABILITY_NAMED_IAM" ],
