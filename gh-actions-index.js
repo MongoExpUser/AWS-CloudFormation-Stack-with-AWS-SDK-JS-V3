@@ -86,8 +86,8 @@ class DeployCloudFormationStack
             const resoureName = config.resoureName;
             const creator = config.creator;
 
-            // these tag's key-value pairs will be used if the keys are not specified for resources on the CloudFormation YAML/JSON file
-            // otherwise, the key-value pairs in the YAML/JSON file over-ride the key-value pairs below.
+            // these tags' key-value pairs will be used if the keys are not specified for the resources on the CloudFormation YAML/JSON file
+            // otherwise, the key-value pairs specified for the resources on the CloudFormation YAML/JSON file over-ride the key-value pairs below.
             const tags = [
                 { Key: "region", Value: regionName }, 
                 { Key: "environment", Value: environment },
