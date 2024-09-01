@@ -6,6 +6,7 @@
     "resoureName" :  "subsurface",
     "creator" : "info@domain.com",
     "stackName": "rt-subsurface-analysis-dev",
+    "// stackName - Comment" : "Stack name is the application name on the AWS Lambda console, if Lambda is deployed within the stack",
     "stackTerminationProtection": false,
     "stackTemplateBodyFileName" : "keyspace.yaml",
     "stackTemplateURL" : "bucketName - this is an alternative to 'stackTemplateBody'",
