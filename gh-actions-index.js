@@ -169,7 +169,8 @@ class DeployCloudFormationStack
     let region =  process.env.AWS_REGION || credentials.region;
     let accessKeyId = process.env.AWS_ACCESS_KEY_ID || credentials.accessKeyId;
     let secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY || credentials.secretAccessKey;
-    let options = { credentials: { accessKeyId : accessKeyId, secretAccessKey: secretAccessKey }, region: region };
+    // let options = { credentials: { accessKeyId : accessKeyId, secretAccessKey: secretAccessKey }, region: region };
+    let options = { accessKeyId : accessKeyId, secretAccessKey: secretAccessKey, region: region };
     let config = JSON.parse(fs.readFileSync(inputConfigJsonFilePath));
     await dcfs.createDeployStack(options, config);
 }());
