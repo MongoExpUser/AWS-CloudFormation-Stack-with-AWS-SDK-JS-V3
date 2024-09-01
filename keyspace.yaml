@@ -64,7 +64,7 @@ Parameters:
     Default: creator@domain.com
     
   KeyspaceTableBillingMode:
-    Description: ON_DEMAND or PROVISIONED. For PROVISIONED, read & write capacity units must be specified. If ON_DEMAND is specified, capacity units are neglected.
+    Description: ON_DEMAND or PROVISIONED. For PROVISIONED, specify read & write capacity units. For ON_DEMAND, blank out (comment out) capacity units
     Type: String
     Default: PROVISIONED
     
